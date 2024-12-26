@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"href= "{{ url_for('static', filename='infiniteScroll.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/AppSearch">App Search</a></li>
+            <li><a href="/analysis">Analysis</a></li>
+            <li><a href="/eda">EDA Process</a></li>
+            <li><a href="/helobot">Helo AI</a></li>
+            <li><a href="/about-us">About Us</a></li>
+            <li><a href="/imageclassify">Image Analysis</a></li>
+            <li><a href="/infiniteScroll">Image Generator</a></li>
+        </ul>
+    </nav>
+    <div id="app">
+<div id="Container">
+<div id="displayImg">
+<div id="clickedimg"></div>
+<button id="x">x</button>
+</div>
+</div>
+    </div>
+</body>
+<script src="{{ url_for('static', filename='infiniteScroll.js') }}"></script>
+</html> 

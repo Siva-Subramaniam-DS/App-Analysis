@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore data analysis and model accuracy results for Google Play Store and Apple App Store.">
+    <title>EDA Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Eda.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Sentiment App Analysis</h1>
+        <p id="datetime">
+            <span id="date"></span>
+            <span id="time"></span>
+        </p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/AppSearch">App Search</a></li>
+            <li><a href="/analysis">Analysis</a></li>
+            <li><a href="/eda">EDA Process</a></li>
+            <li><a href="/helobot">Helo AI</a></li>
+            <li><a href="/about-us">About Us</a></li>
+            <li><a href="/imageclassify">Image Analysis</a></li>
+            <li><a href="/infiniteScroll">Image Generator</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div id="results">
+            {% if playstore_accuracy is not none %}
+                <div class="results-container">
+                    <h2>Google Play Store EDA Results</h2>
+                    <p><strong>Model Accuracy:</strong> {{ playstore_accuracy }}</p>
+                    <h3>Top 10 Google Play Store Apps</h3>
+                    <div>{{ playstore_report|safe }}</div>
+                </div>
+            {% endif %}
+
+            {% if applestore_accuracy is not none %}
+                <div class="results-container">
+                    <h2>Apple App Store EDA Results</h2>
+                    <p><strong>Model Accuracy:</strong> {{ applestore_accuracy }}</p>
+                    <h3>Top 10 Apple App Store Apps</h3>
+                    <div>{{ applestore_report|safe }}</div>
+                </div>
+            {% endif %}
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Data Scientists</p>
+    </footer>
+    <script src="{{ url_for('static', filename='Eda.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genre and App Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='analysis.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Sentiment App Analysis</h1>
+        <p id="datetime">
+            <span id="date"></span>
+            <span id="time"></span>
+        </p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/AppSearch">App Search</a></li>
+            <li><a href="/analysis">Analysis</a></li>
+            <li><a href="/eda">EDA Process</a></li>
+            <li><a href="/helobot">Helo AI</a></li>
+            <li><a href="/about-us">About Us</a></li>
+            <li><a href="/imageclassify">Image Analysis</a></li>
+            <li><a href="/infiniteScroll">Image Generator</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h1>Top 10 Genres in Google Play Store and Apple App Store</h1>
+        <div id="charts">
+            <div id="playstore-chart-container">
+                <h2>Google Play Store Genres</h2>
+                <canvas id="playstoreChart"></canvas>
+            </div>
+            <div id="applestore-chart-container">
+                <h2>Apple App Store Genres</h2>
+                <canvas id="applestoreChart"></canvas>
+            </div>
+        </div>
+        <h1>Top 10 Apps</h1>
+        <div id="charts">
+            <div id="playstore-chart-container">
+                <h2>Google Play Store Top Apps</h2>
+                <canvas id="playstoreChartbar"></canvas>
+            </div>
+            <div id="applestore-chart-container">
+                <h2>Apple App Store Top Apps</h2>
+                <canvas id="applestoreChartbar"></canvas>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Data Scientists</p>
+    </footer>
+    <script src="{{ url_for('static', filename='analysis.js') }}"></script>
+</body>
+</html>

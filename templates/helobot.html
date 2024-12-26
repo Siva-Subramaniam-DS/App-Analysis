@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lexi AI Chatbot</title>
+    <link rel="stylesheet" href="static\helobot.css">
+</head>
+<body>
+    <header>
+        <h1>Sentiment App Analysis</h1>
+        <div id="datetime">
+            <span id="date"></span>
+            <span id="time"></span>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/AppSearch">App Search</a></li>
+            <li><a href="/analysis">Analysis</a></li>
+            <li><a href="/eda">EDA Process</a></li>
+            <li><a href="/helobot">Lexi AI</a></li>
+            <li><a href="/about-us">About Us</a></li>
+            <li><a href="/imageclassify">Image Analysis</a></li>
+            <li><a href="/infiniteScroll">Image Generator</a></li>
+        </ul>
+    </nav>
+
+    <div class="chat-container">
+        <div class="chat-header">Lexi AI Chatbot</div>
+        <div class="chat-box" id="chat-box"></div>
+        <div class="chat-input-container">
+            <input type="text" id="user-input" placeholder="Type your message here...">
+            <button id="send-btn">Send</button>
+        </div>
+    </div>
+
+    <script src="static\helobot.js"></script>
+</body>
+</html>

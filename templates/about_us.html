@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="static\about_us.css">
+</head>
+<body>
+    <header>
+        <h1>Sentiment App Analysis</h1>
+        <p id="datetime">
+            <span id="date"></span>
+            <span id="time"></span>
+        </p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/AppSearch">App Search</a></li>
+            <li><a href="/analysis">Analysis</a></li>
+            <li><a href="/eda">EDA Process</a></li>
+            <li><a href="/helobot">Helo AI</a></li>
+            <li><a href="/about-us">About Us</a></li>
+            <li><a href="/imageclassify">Image Analysis</a></li>
+            <li><a href="/infiniteScroll">Image Generator</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="content-section">
+            <h2>Flask Application Overview</h2>
+            <p><strong>Imports and Initial Setup:</strong> The application imports necessary libraries like Flask, pandas, random, and get_sentiment from a custom sentimental module. It initializes the Flask app and loads datasets from CSV files (googleplaystore.csv and applestore.csv) and feedback from text files.</p>
+            <p><strong>Data Preparation Functions:</strong></p>
+            <ul>
+                <li><strong>get_top_playstore_apps()</strong>: Retrieves the top 10 Google Play Store apps by review count.</li>
+                <li><strong>get_top_applestore_apps()</strong>: Retrieves the top 10 Apple App Store apps by rating count.</li>
+            </ul>
+            <p><strong>Routes:</strong></p>
+            <ul>
+                <li><strong>/ (Index Route):</strong> Handles both GET and POST requests. When POST is received, it extracts app_name and store from the form. Depending on the store selected, it filters the relevant dataset and retrieves app information. If the store is both, it retrieves data from both stores and includes additional comparison data. Returns the rendered index.html with the retrieved data and potential errors.</li>
+                <li><strong>/run-analysis (Analysis Route):</strong> Handles GET and POST requests. Extracts selected fields for Google and Apple stores from the form. Calls a function from the analysis module to run the analysis and prepares image paths for the results. Returns the rendered analysis.html with images for the analysis results.</li>
+            </ul>
+            <p><strong>Error Handling and Feedback:</strong> If an app is not found in the selected store(s), an error message is set and displayed in the HTML template. Random feedback is selected from the loaded feedback and analyzed for sentiment.</p>
+            <p><strong>HTML Page Inference (index.html):</strong></p>
+            <ul>
+                <li><strong>Header and Navigation:</strong> Contains a header with the application title and a datetime display. Navigation links to Home, Run Analysis, and About Us pages.</li>
+                <li><strong>Form for App Search:</strong> Provides input fields for app name and store selection (Google Play Store, Apple App Store, or Both). A submit button to send the form data to the Flask app.</li>
+                <li><strong>Results Section:</strong> Displays error messages or app information depending on the search results. Shows app details from the selected store(s) and includes random feedback and sentiment analysis. If both stores are compared, it displays bar charts for top apps by review count (Google Play Store) and rating count (Apple App Store).</li>
+                <li><strong>Charts:</strong> Uses Chart.js to render bar charts for the top 10 apps from both stores. Chart configuration ensures grids are hidden, and bars have light colors.</li>
+                <li><strong>JavaScript:</strong> Updates the current date and time every second. Configures Chart.js to display data for both Google Play Store and Apple App Store charts based on the provided data.</li>
+            </ul>
+            <p><strong>General Observations:</strong> The Flask app efficiently handles data retrieval, sentiment analysis, and dynamic content rendering based on user input. The HTML is well-structured, incorporating modern design elements such as a clean layout, responsive design, and interactive charts. The combination of Flask routes and Chart.js provides a comprehensive and user-friendly interface for app comparison and analysis.</p>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Data Scientists</p>
+    </footer>
+
+    <script src="static\about_us.js"></script>
+</body>
+</html>

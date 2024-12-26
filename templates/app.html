@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Compare app data and sentiment analysis for Google Play Store and Apple App Store.">
+    <title>App Comparison</title>
+    <link rel="stylesheet" href="static/app.css">
+</head>
+<body>
+    <header class="header">
+        <h1 class="header-title">Sentiment App Analysis</h1>
+        <div class="header-datetime">
+            <span id="date"></span>
+            <span id="time"></span>
+        </div>
+    </header>
+    <nav class="navbar">
+        <ul class="navbar-list">
+            <li><a href="/" class="navbar-link">Home</a></li> 
+            <li><a href='/AppSearch' class="navbar-link active">App Search</a></li>
+            <li><a href="/analysis" class="navbar-link">Analysis</a></li>
+            <li><a href="/eda" class="navbar-link">EDA Process</a></li>
+            <li><a href="/helobot" class="navbar-link">Helo AI</a></li>
+            <li><a href="/about-us" class="navbar-link">About Us</a></li>
+            <li><a href="/imageclassify" class="navbar-link">Image Analysis</a></li>
+            <li><a href="/infiniteScroll" class="navbar-link">Image Generator</a></li>
+        </ul>
+    </nav>
+    <main class="main-content">
+        <form id="appForm" method="post" action="/AppSearch" class="form">
+            <div class="form-group">
+                <label for="app_name" class="form-label">App Name:</label>
+                <input type="text" id="app_name" name="app_name" class="form-input" required placeholder="Enter App Name">
+            </div>
+            <div class="form-group">
+                <label for="store" class="form-label">Choose Store:</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="store" value="playstore" class="form-radio" required> Google Play Store
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="store" value="applestore" class="form-radio"> Apple App Store
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="store" value="both" class="form-radio"> Both
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="form-button">Search</button>
+        </form>
+
+        <div id="results" class="results">
+            {% if error_message %}
+                <p class="error">{{ error_message }}</p>
+            {% else %}
+                <div class="results-container {% if comparison %}compare{% endif %}">
+                    {% if playstore_info %}
+                        <div class="store-info">
+                            <h2 class="store-title">Google Play Store</h2>
+                            <p><strong>App Name:</strong> {{ playstore_info['App'] }}</p>
+                            <p><strong>Rating:</strong> {{ playstore_info['Rating'] }}</p>
+                            <p><strong>Size:</strong> 
+                                {% if playstore_info['Size'] and playstore_info['Size'] not in ['Varies with device', 'N/A', ''] %}
+                                    {% if 'M' in playstore_info['Size'] %}
+                                        {{ "%.2f" | format(playstore_info['Size'] | replace('M', '') | float) }} MB
+                                    {% elif 'K' in playstore_info['Size'] %}
+                                        {{ "%.2f" | format(playstore_info['Size'] | replace('K', '') | float / 1024) }} MB
+                                    {% else %}
+                                        {{ "%.2f" | format(playstore_info['Size'] | float / (1024*1024)) }} MB
+                                    {% endif %}
+                                {% else %}
+                                    Size data unavailable
+                                {% endif %}
+                            </p>
+                            <p><strong>Price:</strong> {{ playstore_info['Price'] }}</p>
+                            <p><strong>App Version:</strong> {{ playstore_info['Current Ver'] }}</p>
+                            <p><strong>Feedback:</strong> {{ feedback_playstore }}</p>
+                            <p><strong>Sentiment:</strong> {{ feedback_sentiment_playstore }}</p>
+                        </div>
+                    {% endif %}
+                    
+                    {% if applestore_info %}
+                        <div class="store-info">
+                            <h2 class="store-title">Apple App Store</h2>
+                            <p><strong>App Name:</strong> {{ applestore_info['track_name'] }}</p>
+                            <p><strong>Rating:</strong> {{ applestore_info['user_rating_ver'] }}</p>
+                            <p><strong>Size:</strong> {{ "%.2f" | format(applestore_info['size_bytes'] | int / (1024*1024)) }} MB</p>
+                            <p><strong>Price:</strong> {{ applestore_info['price'] }}</p>
+                            <p><strong>Version:</strong> {{ applestore_info['ver'] }}</p>
+                            <p><strong>Feedback:</strong> {{ feedback_applestore }}</p>
+                            <p><strong>Sentiment:</strong> {{ feedback_sentiment_applestore }}</p>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2024 Data Scientists</p>
+    </footer>
+    <script src="static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, rgba(10, 10, 20, 0.9), rgba(50, 50, 70, 0.8)), 
+                url('../img/_Sentiment App Analysis Website .jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+}
+
+.header {
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-bottom: 2px solid #444;
+    position: relative;
+}
+
+.header-title {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.header-datetime {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1rem;
+    color: #ccc;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px 0;
+    border-bottom: 1px solid #444;
+}
+
+.navbar-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.navbar-link {
+    text-decoration: none;
+    color: #ccc;
+    padding: 10px 20px;
+    font-weight: bold;
+    transition: background 0.3s, color 0.3s;
+}
+
+.navbar-link:hover,
+.navbar-link.active {
+    background-color: #555;
+    color: white;
+}
+
+.main-content {
+    padding: 40px;
+    max-width: 1200px;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.form {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: rgba(50, 50, 70, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.form-input,
+.form-radio,
+.form-button {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #444;
+}
+
+.form-input {
+    width: 96%;
+    margin-bottom: 10px;
+}
+
+.form-radio {
+    margin-right: 10px;
+}
+
+.radio-group {
+    display: flex;
+    gap: 15px;
+}
+
+.form-button {
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.form-button:hover {
+    background-color: #555;
+}
+
+.results-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.store-info {
+    padding: 20px;
+    background-color: rgba(40, 40, 60, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.store-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.charts-container {
+    padding: 20px;
+    background-color: rgba(40, 40, 60, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.chart {
+    margin-top: 20px;
+    max-height: 400px;
+}
+
+.comparison-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.footer {
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-top: 2px solid #444;
+    color: #ccc;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}

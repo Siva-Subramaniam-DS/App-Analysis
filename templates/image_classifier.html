@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Upload an image to classify it as Good, Bad, or Neutral using our Image Classifier.">
+    <title>Image Classifier</title>
+    <link rel="stylesheet" href="../static/image_classifier.css">
+</head>
+<body>
+    <header>
+        <h1>Sentiment App Analysis</h1>
+        <p id="datetime">
+            <span id="date"></span>
+            <span id="time"></span>
+        </p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/AppSearch">App Search</a></li>
+            <li><a href="/analysis">Analysis</a></li>
+            <li><a href="/eda">EDA Process</a></li>
+            <li><a href="/helobot">Helo AI</a></li>
+            <li><a href="/about-us">About Us</a></li>
+            <li><a href="/imageclassify">Image Analysis</a></li>
+            <li><a href="/infiniteScroll">Image Generator</a></li>
+        </ul>
+    </nav>
+    <main class="container">
+        <h1>Image Classifier</h1>
+        <p>Upload an image to classify it as Good, Bad, or Neutral.</p>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <input type="file" name="file" id="fileInput" accept="image/*" required>
+            <small id="fileFeedback" style="color: red; display: none;">Please select a valid image file.</small>
+            <button type="submit" aria-label="Upload and classify the selected image">Upload and Classify</button>
+        </form>
+        <img id="previewImage" style="display: none; max-width: 100%; margin-top: 20px;" alt="Uploaded preview">
+        <div id="result" style="margin-top: 20px;"></div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Data Scientists</p>
+    </footer>
+    <script src="../static/image_classifier.js"></script>
+</body>
+</html>
